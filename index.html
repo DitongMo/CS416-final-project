@@ -29,7 +29,7 @@
         // Load the data from the CSV file
         d3.csv("data/US_vaccine_cummulative_trend.csv").then(function (data) {
             // Parse the dates in the data
-            const parseDate = d3.timeParse("%Y-%m-%d");
+            const parseDate = d3.timeParse("%m/%d/%Y");
             data.forEach(function (d) {
                 d.date = parseDate(d.date);
                 d.vaccines_administered = +d.vaccines_administered;
