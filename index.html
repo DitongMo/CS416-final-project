@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>COVID Vaccine Trends in the US title</title>
+
+    <!-- Load D3.js library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Add your CSS styles here (if needed) -->
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+    <h1>COVID Vaccine Trends in the US heading</h1>
+    <div id="chart"></div>
+    <h2>before script loaded test</h2>
+    <script>
+        // Set up the dimensions for the chart
+        const width = 800;
+        const height = 400;
+        const margin = { top: 20, right: 30, bottom: 30, left: 60 };
+
+        // Create an SVG element to contain the chart
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        // Load the data from the CSV file
+        d3.csv("data/US_vaccine_cummulative_trend.csv").then(function (data) {
+            // Parse the dates in the data
+            const parseDate = d3.timeParse("%Y-%m-%d");
+            data.forEach(function (d) {
+                d.date = parseDate(d.date);
+                d.vaccines_administered = +d.vaccines_administered;
+            });
+
+            // Set up the scales for x and y axes
+            const xScale = d3.scaleTime()
+                .domain(d3.extent(data, function (d) { return d.date; }))
+                .range([margin.left, width - margin.right]);
+
+            const yScale = d3.scaleLinear()
+                .domain([0, d3.max(data, function (d) { return d.vaccines_administered; })])
+                .range([height - margin.bottom, margin.top]);
+
+            // Create the x and y axes
+            const xAxis = d3.axisBottom(xScale);
+            const yAxis = d3.axisLeft(yScale);
+
+            // Add the x and y axes to the chart
+            svg.append("g")
+                .attr("transform", "translate(0," + (height - margin.bottom) + ")")
+                .call(xAxis);
+
+            svg.append("g")
+                .attr("transform", "translate(" + margin.left + ",0)")
+                .call(yAxis);
+
+            // Create the line generator
+            const line = d3.line()
+                .x(function (d) { return xScale(d.date); })
+                .y(function (d) { return yScale(d.vaccines_administered); });
+
+            // Add the line to the chart
+            svg.append("path")
+                .datum(data)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-width", 2)
+                .attr("d", line);
+        });
+    </script>
+        <h2>end of the script </h2>
+
+</body>
+</html>
