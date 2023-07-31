@@ -1,3 +1,14 @@
+var margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+var svg = d3.select("#chart5")
+    .append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", "0 0 800 400")
+    .append("g")
+    .attr("transform", "translate(50, 50)");
 
 // Load the data from CSV file
 d3.csv("cases_by_age_group_v3.csv").then(function(data) {
@@ -11,21 +22,10 @@ d3.csv("cases_by_age_group_v3.csv").then(function(data) {
   // });
 
     // set the dimensions and margins of the graph
-const margin = {top: 30, right: 30, bottom: 70, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
-
-const svg = d3.select("#chart5")
-    .append("svg")
-    .attr("width", "100%")
-    .attr("height", "100%")
-    .attr("viewBox", "0 0 800 400")
-    .append("g")
-    .attr("transform", "translate(50, 50)");
 
   
 // X axis
-const x = d3.scaleBand()
+var x = d3.scaleBand()
 .range([ 0, width ])
 .domain(data.map(function(d) { return d.age_group; }))
 .padding(0.2);
@@ -37,7 +37,7 @@ svg.append("g")
   .style("text-anchor", "end");
 
 // Add Y axis
-const y = d3.scaleLinear()
+var y = d3.scaleLinear()
 .domain([0, 22])
 .range([ height, 0]);
 svg.append("g")
@@ -54,25 +54,3 @@ svg.selectAll("bar")
   .attr("height", function(d) { return height - y(d.percent_of_us_population); })
   .attr("fill", "#FF5733")
   });
-
-// Add x-axis label
-svg.append("text")
-  .attr("x", width / 2)
-  .attr("y", height + margin.bottom)
-  .attr("text-anchor", "middle")
-  .text("Age Group");
-
-// Add y-axis label
-svg.append("text")
-  .attr("transform", "rotate(-90)")
-  .attr("x", -height / 2)
-  .attr("y", -margin.left)
-  .attr("text-anchor", "middle")
-  .text("Percentage of US population");
-
-// Add chart title
-svg.append('text')
-  .attr('x', width / 2)
-  .attr('y', -margin.top / 2)
-  .attr('text-anchor', 'middle')
-  .text('Age Group: Percent of us population in US');
