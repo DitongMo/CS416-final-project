@@ -1,4 +1,16 @@
-// set the dimensions and margins of the graph
+
+// Load the data from CSV file
+d3.csv("cases_by_age_group_v3.csv").then(function(data) {
+    data.forEach(function(d) {
+      d.percent_of_us_population = +d.percent_of_us_population;
+    });
+
+  //    // Sort data
+  // data.sort(function(b, a) {
+  //   return a.percent_of_us_population - b.percent_of_us_population;
+  // });
+
+    // set the dimensions and margins of the graph
 var margin = {top: 30, right: 30, bottom: 70, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
@@ -11,16 +23,6 @@ var svg = d3.select("#chart5")
     .append("g")
     .attr("transform", "translate(50, 50)");
 
-// Load the data from CSV file
-d3.csv("cases_by_age_group_v3.csv").then(function(data) {
-    data.forEach(function(d) {
-      d.percent_of_us_population = +d.percent_of_us_population;
-    });
-
-  //    // Sort data
-  // data.sort(function(b, a) {
-  //   return a.percent_of_us_population - b.percent_of_us_population;
-  // });
   
 // X axis
 var x = d3.scaleBand()
