@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
-var margin = {top: 30, right: 30, bottom: 70, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+// var margin = {top: 30, right: 30, bottom: 70, left: 60},
+//     width = 460 - margin.left - margin.right,
+//     height = 400 - margin.top - margin.bottom;
 
 var svg = d3.select("#chart3")
     .append("svg")
@@ -54,20 +54,20 @@ svg.selectAll("bar")
   .attr("fill", "#69b3a2")
   });
 
-// Add x-axis label
-svg.append("text")
-  .attr("x", width / 2)
-  .attr("y", height + margin.bottom)
-  .attr("text-anchor", "middle")
-  .text("Age Group");
+// // Add x-axis label
+// svg.append("text")
+//   .attr("x", width / 2)
+//   .attr("y", height + margin.bottom)
+//   .attr("text-anchor", "middle")
+//   .text("Age Group");
 
-// Add y-axis label
-svg.append("text")
-  .attr("transform", "rotate(-90)")
-  .attr("x", -height / 2)
-  .attr("y", -margin.left)
-  .attr("text-anchor", "middle")
-  .text("Percentage of Cases");
+// // Add y-axis label
+// svg.append("text")
+//   .attr("transform", "rotate(-90)")
+//   .attr("x", -height / 2)
+//   .attr("y", -margin.left)
+//   .attr("text-anchor", "middle")
+//   .text("Percentage of Cases");
 
 // Add chart title
 svg.append('text')
