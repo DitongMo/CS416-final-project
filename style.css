@@ -59,10 +59,10 @@ p {
 
 .container {
   max-width: 800px;
-  margin: 20px auto; /* Add margin to create space between containers */
+  margin: 20px auto; 
   padding: 20px;
-  border: 1px solid #ccc; /* Optional: Add border for visual separation */
-  background-color: #FFFFFF
+  border: 1px solid #ccc; 
+  background-color: #FFFFF0;
 }
 
 
