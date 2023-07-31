@@ -1,9 +1,9 @@
 // Load the data from CSV file
-d3.csv("US_vaccine_cummulative_trend.csv").then(function(data) {
+d3.csv("hospital.csv").then(function(data) {
   // Convert date strings to Date objects
   data.forEach(function(d) {
-    d.date = new Date(d.date);
-    d.covid_vaccine_administered = +d.covid_vaccine_administered;
+    d.Date = new Date(d.Date);
+    d.Hospital = +d.Hospital;
   });
 
   // Set up SVG container
@@ -17,11 +17,11 @@ d3.csv("US_vaccine_cummulative_trend.csv").then(function(data) {
 
   // Set up scales and axes
   var xScale = d3.scaleTime()
-    .domain(d3.extent(data, function(d) { return d.date; }))
+    .domain(d3.extent(data, function(d) { return d.Date; }))
     .range([0, 700]);
 
   var yScale = d3.scaleLinear()
-    .domain([0, d3.max(data, function(d) { return d.covid_vaccine_administered; })])
+    .domain([0, d3.max(data, function(d) { return d.Hospital; })])
     .range([300, 0]);
 
   var xAxis = d3.axisBottom(xScale);
@@ -38,8 +38,8 @@ d3.csv("US_vaccine_cummulative_trend.csv").then(function(data) {
 
   // Create a line generator
   var line = d3.line()
-    .x(function(d) { return xScale(d.date); })
-    .y(function(d) { return yScale(d.covid_vaccine_administered); });
+    .x(function(d) { return xScale(d.Date); })
+    .y(function(d) { return yScale(d.Hospital); });
 
   // Draw the line chart
   svg.append("path")
