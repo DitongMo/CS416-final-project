@@ -62,25 +62,3 @@ svg.selectAll("bar")
   .attr("height", function(d) { return height - y(d.percent_of_cases); })
   .attr("fill", "#69b3a2")
   });
-
-// Add x-axis label
-svg.append("text")
-  .attr("x", width / 2)
-  .attr("y", height + margin.bottom)
-  .attr("text-anchor", "middle")
-  .text("Age Group");
-
-// Add y-axis label
-svg.append("text")
-  .attr("transform", "rotate(-90)")
-  .attr("x", -height / 2)
-  .attr("y", -margin.left)
-  .attr("text-anchor", "middle")
-  .text("Percentage of Cases");
-
-// Add chart title
-svg.append('text')
-  .attr('x', width / 2)
-  .attr('y', -margin.top / 2)
-  .attr('text-anchor', 'middle')
-  .text('Age Group: Percent of Cases in US');
