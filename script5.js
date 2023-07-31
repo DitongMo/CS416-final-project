@@ -3,7 +3,7 @@ var margin = {top: 30, right: 30, bottom: 70, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-var svg = d3.select("#chart")
+var svg = d3.select("#chart5")
     .append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
@@ -13,10 +13,9 @@ var svg = d3.select("#chart")
 
 // Load the data from CSV file
 d3.csv("cases_by_age_group_v2.csv").then(function(data) {
-    // Convert percentage values to numbers
-  //   data.forEach(function(d) {
-  //     d.percent_of_us_population = +d.percent_of_us_population;
-  //   });
+    data.forEach(function(d) {
+      d.percent_of_us_population = +d.percent_of_us_population;
+    });
 
   //    // Sort data
   // data.sort(function(b, a) {
@@ -67,7 +66,7 @@ svg.append("text")
   .attr("x", -height / 2)
   .attr("y", -margin.left)
   .attr("text-anchor", "middle")
-  .text("Percentage of Cases");
+  .text("Percentage of US population");
 
 // Add chart title
 svg.append('text')
