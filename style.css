@@ -76,7 +76,27 @@ p {
 }
 
 
-#chart1, #chart2,#chart3,#chart4, #chart5{
+#chart1{
+  width: 100%;
+  height: 400px;
+  margin-top: 20px; /* Add margin between heading and chart */
+}
+#chart2{
+  width: 100%;
+  height: 400px;
+  margin-top: 20px; /* Add margin between heading and chart */
+}
+#chart3{
+  width: 100%;
+  height: 400px;
+  margin-top: 20px; /* Add margin between heading and chart */
+}
+#chart4{
+  width: 100%;
+  height: 400px;
+  margin-top: 20px; /* Add margin between heading and chart */
+}
+#chart5{
   width: 100%;
   height: 400px;
   margin-top: 20px; /* Add margin between heading and chart */
