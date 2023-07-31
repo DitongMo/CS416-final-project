@@ -11,11 +11,11 @@ d3.csv("cases_by_age_group_v3.csv").then(function(data) {
   // });
 
     // set the dimensions and margins of the graph
-var margin = {top: 30, right: 30, bottom: 70, left: 60},
+const margin = {top: 30, right: 30, bottom: 70, left: 60},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-var svg = d3.select("#chart5")
+const svg = d3.select("#chart5")
     .append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
@@ -25,7 +25,7 @@ var svg = d3.select("#chart5")
 
   
 // X axis
-var x = d3.scaleBand()
+const x = d3.scaleBand()
 .range([ 0, width ])
 .domain(data.map(function(d) { return d.age_group; }))
 .padding(0.2);
@@ -37,7 +37,7 @@ svg.append("g")
   .style("text-anchor", "end");
 
 // Add Y axis
-var y = d3.scaleLinear()
+const y = d3.scaleLinear()
 .domain([0, 22])
 .range([ height, 0]);
 svg.append("g")
