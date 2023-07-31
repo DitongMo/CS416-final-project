@@ -12,7 +12,7 @@ var svg = d3.select("#chart5")
     .attr("transform", "translate(50, 50)");
 
 // Load the data from CSV file
-d3.csv("cases_by_age_group_v2.csv").then(function(data) {
+d3.csv("cases_by_age_group_v3.csv").then(function(data) {
     data.forEach(function(d) {
       d.percent_of_us_population = +d.percent_of_us_population;
     });
