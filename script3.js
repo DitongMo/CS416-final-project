@@ -3,6 +3,18 @@
 //     width = 460 - margin.left - margin.right,
 //     height = 400 - margin.top - margin.bottom;
 
+// Load the data from CSV file
+d3.csv("cases_by_age_group_v2.csv").then(function(data) {
+    Convert percentage values to numbers
+    data.forEach(function(d) {
+      d.percent_of_cases = +d.percent_of_cases;
+    });
+    
+
+  //    // Sort data
+  // data.sort(function(b, a) {
+  //   return a.percent_of_cases - b.percent_of_cases;
+  // });
 var svg = d3.select("#chart3")
     .append("svg")
     .attr("width", "100%")
@@ -11,17 +23,6 @@ var svg = d3.select("#chart3")
     .append("g")
     .attr("transform", "translate(50, 50)");
 
-// Load the data from CSV file
-d3.csv("cases_by_age_group_v2.csv").then(function(data) {
-    Convert percentage values to numbers
-    data.forEach(function(d) {
-      d.percent_of_cases = +d.percent_of_cases;
-    });
-
-  //    // Sort data
-  // data.sort(function(b, a) {
-  //   return a.percent_of_cases - b.percent_of_cases;
-  // });
   
 // X axis
 var x = d3.scaleBand()
