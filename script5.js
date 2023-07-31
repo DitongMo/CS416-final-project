@@ -1,14 +1,3 @@
-var margin = {top: 30, right: 30, bottom: 70, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
-
-var svg = d3.select("#chart5")
-    .append("svg")
-    .attr("width", "100%")
-    .attr("height", "100%")
-    .attr("viewBox", "0 0 800 400")
-    .append("g")
-    .attr("transform", "translate(50, 50)");
 
 // Load the data from CSV file
 d3.csv("cases_by_age_group_v3.csv").then(function(data) {
@@ -22,6 +11,18 @@ d3.csv("cases_by_age_group_v3.csv").then(function(data) {
   // });
 
     // set the dimensions and margins of the graph
+
+var margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+var svg = d3.select("#chart5")
+    .append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", "0 0 800 400")
+    .append("g")
+    .attr("transform", "translate(50, 50)");
 
   
 // X axis
