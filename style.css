@@ -62,6 +62,7 @@ p {
   margin: 20px auto; /* Add margin to create space between containers */
   padding: 20px;
   border: 1px solid #ccc; /* Optional: Add border for visual separation */
+  background-color: #FFFFFF
 }
 
 
